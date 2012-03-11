@@ -2,4 +2,7 @@
 var script  = document.createElement('script')
 script.src  = 'http://localhost:3131/'+window.location.host.replace('www.','')
 script.type = 'text/javascript'
-document.body.appendChild(script)
+console.log(document.body)
+window.onload = function() {
+  document.body.appendChild(script);
+};
