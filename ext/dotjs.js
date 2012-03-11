@@ -1,10 +1,5 @@
-$.ajax({
-  url: 'http://localhost:3131/'+window.location.host.replace('www.','')+'.js',
-  dataType: 'text',
-  success: function(d){
-    $(function(){ eval(d) })
-  },
-  error: function(){
-    console.log('no dotjs server found at localhost:3131')
-  }
-})
+// Append a script tag instead of evaluating as the extenstion runtime is getting in the way
+var script  = document.createElement('script')
+script.src  = 'http://localhost:3131/'+window.location.host.replace('www.','')
+script.type = 'text/javascript'
+document.body.appendChild(script)
