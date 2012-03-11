@@ -1,7 +1,14 @@
-#!/usr/bin/env ruby
+#!/usr/bin/ruby
+require "logger"
+ROOT_DIR = File.join(ENV['HOME'], '.js')
+LOG_FILE = ROOT_DIR + '/dotjs.log'
+logger   = Logger.new(LOG_FILE)
+$stdout  = File.new(LOG_FILE+'.stdout', 'a')
+$stderr  = File.new(LOG_FILE+'.stderr', 'a')
+
 begin
   require 'coffee-script'
-rescue
+rescue LoadError
   require 'rubygems'
   require 'coffee-script'
 end
