@@ -6,7 +6,7 @@ task :install => 'install:all'
 DAEMON_INSTALL_DIR = "/usr/local/bin"
 
 task :build do
-  system "rm -rf builds/dotjs.crx && zip -r builds/dotjs.crx ext/"
+  system "crxmake --pack-extension=./ext/ --extension-output=builds/dotjs.crx "
 end
 
 namespace :install do
