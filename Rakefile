@@ -5,6 +5,10 @@ task :install => 'install:all'
 
 DAEMON_INSTALL_DIR = "/usr/local/bin"
 
+task :build do
+  system "rm -rf builds/dotjs.crx && zip -r builds/dotjs.crx ext/"
+end
+
 namespace :install do
   task :all => [ :prompt, :daemon, :create_dir, :agent, :chrome, :done ]
 
