@@ -1,4 +1,10 @@
 #!/usr/bin/env ruby
+begin
+  require 'coffee-script'
+rescue
+  require 'rubygems'
+  require 'coffee-script'
+end
 
 if (%w( -h --help -help help ) & ARGV).length > 0
   puts "usage: djsd [-hv]"
@@ -26,7 +32,7 @@ dotjs = Class.new(WEBrick::HTTPServlet::AbstractServlet) do
 
     puts coffee_file
     if File.exists?(coffee_file)
-      body << `coffee -p -c #{coffee_file}`
+      body << CoffeeScript.compile(File.open(coffee_file))
     elsif File.exists?(js_file)
       body << File.read(file) if File.file?(js_file)
     end
